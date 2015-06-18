@@ -22,6 +22,10 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
+        templateUrl: 'views/scanning-css.html',
+        controller: 'TestCtrl'
+      })
+      .when('/list', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
