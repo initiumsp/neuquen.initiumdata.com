@@ -28,7 +28,7 @@ angular.module('neuqueninitiumdatacomApp')
         station3.style.visibility = 'visible';
         $scope.newStation = true;
       }
-    }
+    };
 
-    $scope.switchStation();
+    //$scope.switchStation();
   });
