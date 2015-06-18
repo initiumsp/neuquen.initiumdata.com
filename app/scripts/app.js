@@ -33,6 +33,10 @@ angular
         templateUrl: 'views/scanning-css.html',
         controller: 'TestCtrl'
       })
+      .when('/cropping-css', {
+        templateUrl: 'views/cropping-css.html',
+        controller: 'TestCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
