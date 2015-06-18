@@ -29,6 +29,10 @@ angular
         templateUrl: 'views/rotate-css.html',
         controller: 'TestCtrl'
       })
+      .when('/scanning-css', {
+        templateUrl: 'views/scanning-css.html',
+        controller: 'TestCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
