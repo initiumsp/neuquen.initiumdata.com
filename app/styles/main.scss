@@ -200,7 +200,7 @@ body {
     &.station3 {
       transform-orientation: left bottom;
       transform: rotate(270deg);
-      //visibility: hidden;
+      visibility: hidden;
       animation:spin3 8s linear infinite;
     }
     @keyframes spin3 { 100% { -webkit-transform: rotate(630deg); transform:rotate(630deg); } }
