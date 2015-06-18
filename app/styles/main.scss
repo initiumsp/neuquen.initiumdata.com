@@ -12,6 +12,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  background-color: gainsboro;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -112,11 +113,18 @@ body {
 
 
 #exp2 {
-  width: 300px;
-  height: 300px;
+  position: relative;
+
+  width: 400px;
+  height: 400px;
   border: dashed 1px;
+
+  z-index: 6;
+  background-color: white;
+
   .rotate {
-    position: relative;
+    z-index: 2;
+    position: absolute;
     top: 25%;
     left: 25%;
     width: 50%;
@@ -128,4 +136,70 @@ body {
   //@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
   //@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+  .regiongroup {
+    position: relative;
+    z-index: 1;
+    div {
+      background-color: #000066;
+      width: 300px;
+      height: 300px;
+    }
+    .region {
+      position: absolute;
+      bottom: 0;
+      left: 100px;
+      &.left {
+        transform-origin: left bottom;
+        transform: rotate(20deg);
+        //-webkit-transform: rotate(0deg);
+      }
+      &.right {
+        transform-origin: left bottom;
+        transform: rotate(60deg);
+        //-webkit-transform: rotate(160deg);
+      }
+    }
+    &.green {
+      .region {
+        background-color: green;
+      }
+    }
+    &.red {
+      .region {
+        background-color: red;
+      }
+    }
+
+    // Position the region group at the center
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    &.station1 {
+      transform-orientation: left bottom;
+      transform: rotate(0deg);
+      //visibility: hidden;
+      animation:spin1 8s linear infinite;
+    }
+    @keyframes spin1 { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+    &.station2 {
+      transform-orientation: left bottom;
+      transform: rotate(120deg);
+      //visibility: hidden;
+      animation:spin2 8s linear infinite;
+    }
+    @keyframes spin2 { 100% { -webkit-transform: rotate(480deg); transform:rotate(480deg); } }
+
+    &.station3 {
+      transform-orientation: left bottom;
+      transform: rotate(270deg);
+      //visibility: hidden;
+      animation:spin3 8s linear infinite;
+    }
+    @keyframes spin3 { 100% { -webkit-transform: rotate(630deg); transform:rotate(630deg); } }
+  }
 }
+
+
