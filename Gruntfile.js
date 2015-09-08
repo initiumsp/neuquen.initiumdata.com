@@ -13,6 +13,8 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  grunt.loadNpmTasks('grunt-rsync');
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -424,6 +426,23 @@ module.exports = function (grunt) {
       ]
     },
 
+    rsync: {
+      options: {
+        args: ["--verbose"],
+        exclude: [".git*","*.scss","node_modules"],
+        recursive: true
+      },
+      showcase: {
+        options: {
+          src: "./dist/",
+          dest: "/home/vagrant/web/neuquen",
+          host: "showcase",
+          delete: true // Careful this option could cause data loss, read the docs!
+        }
+      }
+    },
+
+
     // Test settings
     karma: {
       unit: {
@@ -453,6 +472,14 @@ module.exports = function (grunt) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
+
+  grunt.registerTask('deploy:staging', [
+    'rsync',
+  ]);
+
+  grunt.registerTask('deploy:prod', [
+    'gh-pages',
+  ]);
 
   grunt.registerTask('test', [
     'clean:server',
