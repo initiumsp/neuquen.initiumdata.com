@@ -8,7 +8,7 @@
     <img src="images/moon.svg" alt=""/>
   </div>
   <div class="rotate-group">
-    <a href="" ng-click="switchStation()">
+    <a href="javascript:toggleThirdStation()">
       <img class="earth" src="images/earth_top.svg" alt=""/>
     </a>
     <div class="regiongroup station1 red">
@@ -31,3 +31,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  window.toggleThirdStation = function(){
+    //alert('h');
+    var station3 = document.querySelector('.station3');
+    if (station3.style.visibility == 'hidden'){
+      station3.style.visibility = 'visible';
+    } else {
+      station3.style.visibility = 'hidden';
+    }
+  };
+</script>
+
+
