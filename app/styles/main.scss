@@ -116,7 +116,7 @@ body {
 
   overflow: hidden;
 
-  background-image: url('../images/sky_nasa.jpg');
+  background-image: url('../images/universe.png');
   background-size: 100%;
 
   position: relative;
@@ -193,13 +193,15 @@ body {
       }
     }
     &.green {
+      opacity: 0.5;
       .region {
-        background-color: green;
+        background-color: #F48787;
       }
     }
     &.red {
+      opacity: .5;
       .region {
-        background-color: red;
+        background-color: #29B5C8;
       }
     }
 
