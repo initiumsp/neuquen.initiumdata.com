@@ -456,6 +456,14 @@ module.exports = function (grunt) {
           host: "showcase",
           delete: true // Careful this option could cause data loss, read the docs!
         }
+      },
+      showcaseRoot: {
+        options: {
+          src: "./dist/",
+          dest: "/home/vagrant/web/neuquen/",
+          host: "showcase",
+          delete: true // Careful this option could cause data loss, read the docs!
+        }
       }
     },
 
@@ -490,6 +498,10 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
+  grunt.registerTask('deploy:staging:root', [
+    'rsync:showcaseRoot',
+  ]);
+
   grunt.registerTask('deploy:staging:realsize', [
     'rsync:showcaseRealSize',
   ]);
@@ -499,7 +511,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('deploy:staging:tiny', [
-    'rsync:showcaseSmall',
+    'rsync:showcaseTiny',
   ]);
 
   grunt.registerTask('deploy:prod', [
