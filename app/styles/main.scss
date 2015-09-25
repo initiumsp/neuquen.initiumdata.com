@@ -18,6 +18,7 @@ $longitude-station2: -(75.989722 + $longitude-greenwich) * 1deg; //喀什
 $longitude-station3: -(-68.06 + $longitude-greenwich) * 1deg; //內烏肯
 $scanning-angle: 170; // degree
 $scaling-factor: 59.375 * $earth-radius / ($figure-width - 2 * $earth-radius - 2 * $moon-radius) / $diagonal-ratio;
+$scaling-factor: 0.5;
 $figure-width: $figure-width * $scaling-factor;
 $figure-height: $figure-height * $scaling-factor;
 

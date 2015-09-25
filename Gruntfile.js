@@ -433,10 +433,26 @@ module.exports = function (grunt) {
         exclude: [".git*","*.scss","node_modules"],
         recursive: true
       },
-      showcase: {
+      showcaseRealSize: {
         options: {
           src: "./dist/",
-          dest: "/home/vagrant/web/neuquen",
+          dest: "/home/vagrant/web/neuquen/realsize",
+          host: "showcase",
+          delete: true // Careful this option could cause data loss, read the docs!
+        }
+      },
+      showcaseTiny: {
+        options: {
+          src: "./dist/",
+          dest: "/home/vagrant/web/neuquen/tiny",
+          host: "showcase",
+          delete: true // Careful this option could cause data loss, read the docs!
+        }
+      },
+      showcaseSmall: {
+        options: {
+          src: "./dist/",
+          dest: "/home/vagrant/web/neuquen/small",
           host: "showcase",
           delete: true // Careful this option could cause data loss, read the docs!
         }
@@ -474,8 +490,16 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('deploy:staging', [
-    'rsync',
+  grunt.registerTask('deploy:staging:realsize', [
+    'rsync:showcaseRealSize',
+  ]);
+
+  grunt.registerTask('deploy:staging:small', [
+    'rsync:showcaseSmall',
+  ]);
+
+  grunt.registerTask('deploy:staging:tiny', [
+    'rsync:showcaseSmall',
   ]);
 
   grunt.registerTask('deploy:prod', [
