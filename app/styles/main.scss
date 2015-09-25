@@ -3,8 +3,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$base-size: 2px;
+$figure-width: 560 * $base-size;
+$figure-height: 300 * $base-size;
+$earth-radius: 30 * $base-size;
+$moon-radius: 0.273 * $earth-radius;
+$longitude-greenwich: -55; //degree
+$longitude-station1: -(130.368889 + $longitude-greenwich) * 1deg; //佳木斯
+$longitude-station2: -(75.989722 + $longitude-greenwich) * 1deg; //喀什
+$longitude-station3: -(-68.06 + $longitude-greenwich) * 1deg; //內烏肯
+$scanning-angle: 170; // degree
 
 #illustration {
+  font-size: 1px;
   overflow: hidden;
 
   background-image: url('../images/universe.png');
@@ -15,19 +26,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   // iPhone 6 screen size
   //width: 357px;
   //height: 667px;
-  width: 600px;
-  height: 400px;
+  width: $figure-width;
+  height: $figure-height;
   margin-left: auto;
   margin-right: auto;
 
   //background-color: white;
 
   .moon {
-    width: 50px;
-    height: 50px;
+    width: $moon-radius * 2;
+    height: $moon-radius * 2;
     position: absolute;
-    right: 25px;
-    top: 25px;
+    right: $moon-radius * 2;
+    top: $moon-radius * 2;
     img {
       width: 100%;
       height: 100%;
@@ -38,9 +49,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     position: absolute;
     bottom: 0px;
     left: 0px;
-    width: 200px;
-    height: 200px;
+    width: $earth-radius * 4;
+    height: $earth-radius * 4;
     animation:spin 8s linear infinite;
+
   }
   @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
@@ -48,7 +60,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     position: absolute;
     top: 25%;
     left: 25%;
-    width: 50%;
+    width: $earth-radius * 2;
+    height: $earth-radius * 2;
     //height: 300px;
     //-webkit-animation:spin 4s linear infinite;
     //-moz-animation:spin 4s linear infinite;
@@ -67,21 +80,21 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     opacity: 0.5;
     div {
       background-color: #000066;
-      width: 1000px;
-      height: 1000px;
+      width: $figure-width * 10;
+      height: $figure-height * 10;
     }
     .region {
       position: absolute;
       bottom: 0;
-      left: 50px;
+      left: $earth-radius;
       &.left {
         transform-origin: left bottom;
-        transform: rotate(20deg);
+        transform: rotate((90 - $scanning-angle/2) * 1deg);
         //-webkit-transform: rotate(0deg);
       }
       &.right {
         transform-origin: left bottom;
-        transform: rotate(60deg);
+        transform: rotate(($scanning-angle/2) * 1deg);
         //-webkit-transform: rotate(160deg);
       }
     }
@@ -100,7 +113,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
     &.station1 {
       transform-orientation: left bottom;
-      transform: rotate(0deg);
+      transform: rotate($longitude-station1);
       //visibility: hidden;
       //animation:spin1 8s linear infinite;
     }
@@ -108,7 +121,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
     &.station2 {
       transform-orientation: left bottom;
-      transform: rotate(120deg);
+      transform: rotate($longitude-station2);
       //visibility: hidden;
       //animation:spin2 8s linear infinite;
     }
@@ -116,8 +129,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
     &.station3 {
       transform-orientation: left bottom;
-      transform: rotate(270deg);
-      visibility: hidden;
+      transform: rotate($longitude-station3);
+      //visibility: hidden;
       //animation:spin3 8s linear infinite;
     }
     //@keyframes spin3 { 100% { -webkit-transform: rotate(630deg); transform:rotate(630deg); } }
