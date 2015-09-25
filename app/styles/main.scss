@@ -4,8 +4,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 $base-size: 2px;
+// WARNING: Following three variables must be adjusted together
+//          Unless you want to ignore the real ratio
 $figure-width: 560 * $base-size;
 $figure-height: 300 * $base-size;
+$diagonal-ratio: 1.134;
+// #Needs to manually calculate $diagonal-ratio = sqrt(1 + ($figure-height / $figure-width)^2)
 $earth-radius: 30 * $base-size;
 $moon-radius: 0.273 * $earth-radius;
 $longitude-greenwich: -55; //degree
@@ -13,12 +17,25 @@ $longitude-station1: -(130.368889 + $longitude-greenwich) * 1deg; //佳木斯
 $longitude-station2: -(75.989722 + $longitude-greenwich) * 1deg; //喀什
 $longitude-station3: -(-68.06 + $longitude-greenwich) * 1deg; //內烏肯
 $scanning-angle: 170; // degree
+$scaling-factor: 59.375 * $earth-radius / ($figure-width - 2 * $earth-radius - 2 * $moon-radius) / $diagonal-ratio;
+$figure-width: $figure-width * $scaling-factor;
+$figure-height: $figure-height * $scaling-factor;
+
+//x: current width (from earth center to moon center)
+//r: ratio of height to width
+//y = x * r (from earth center to moon center)
+//d = sqrt(x^2 + y^2) = sqrt(x^2 + (x*r)^2) = sqrt(x^2 * (1 + r^2)) = x * sqrt(1 + r^2)
+//reald = 59.375 * earthd
+//scale = reald / d = 59.375 * earthr / x * (1 / sqrt(1 + r^2))
+//Needs to manually calculate $diagonal-ratio = sqrt(1 + ($figure-height / $figure-width)^2)
 
 #illustration {
   font-size: 1px;
   overflow: hidden;
 
   background-image: url('../images/universe.png');
+  background-repeat: repeat;
+
   background-size: 100%;
 
   position: relative;
