@@ -1,10 +1,10 @@
 <!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/main.ae877183.css">  <body> <div id="illustration"> <div class="moon"> <img src="images/moon.c02bcb53.svg" alt=""> </div> <div class="rotate-group"> <a href="javascript:toggleThirdStation()"> <img class="earth" src="images/earth_top.f11237f9.svg" alt=""> </a> <div class="regiongroup station1 red"> <div class="region left"> </div> <div class="region right"> </div> </div> <div class="regiongroup station2 red"> <div class="region left"> </div> <div class="region right"> </div> </div> <div class="regiongroup station3 green"> <div class="region left"> </div> <div class="region right"> </div> </div> </div> </div> <script>window.toggleThirdStation = function(){
           //alert('h');
           var station3 = document.querySelector('.station3');
-          if (station3.style.visibility == 'hidden'){
-            station3.style.visibility = 'visible';
-          } else {
+          if (station3.style.visibility == 'visible'){
             station3.style.visibility = 'hidden';
+          } else {
+            station3.style.visibility = 'visible';
           }
         };</script> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
